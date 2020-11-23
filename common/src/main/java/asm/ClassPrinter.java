@@ -1,4 +1,4 @@
-package agent;
+package asm;
 
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;

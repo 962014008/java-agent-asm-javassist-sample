@@ -1,4 +1,4 @@
-package timer;
+package javaassist;
 
 import javassist.ClassPool;
 import javassist.CtClass;

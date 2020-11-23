@@ -1,6 +1,7 @@
 package agent;
 
-import timer.ElapsedTimeCalculator;
+import asm.ClassPrinterCaller;
+import javaassist.ElapsedTimeCalculator;
 
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.Instrumentation;
@@ -19,16 +20,12 @@ public class Agent1 {
 
                 if ("stuff/Stuff".equals(s)) {
                     try {
-                        // ASM Code
-//                        ClassReader reader = new ClassReader(bytes);
-//                        ClassWriter writer = new ClassWriter(reader, 0);
-//                        ClassPrinter visitor = new ClassPrinter(writer);
-//                        reader.accept(visitor, 0);
-//                        return writer.toByteArray();
-
                         // Javassist
                         ElapsedTimeCalculator.addElapsedTimeLogic("stuff.Stuff", "stuff1", "Javassist Agent1 first");
-                        return ElapsedTimeCalculator.addElapsedTimeLogic("stuff.Stuff", "stuff1", "Javassist Agent1 second");
+                        ElapsedTimeCalculator.addElapsedTimeLogic("stuff.Stuff", "stuff1", "Javassist Agent1 second");
+
+                        // ASM Code
+                        return ClassPrinterCaller.addPrintClassDefLogic(bytes);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
